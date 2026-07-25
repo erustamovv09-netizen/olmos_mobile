@@ -1,0 +1,162 @@
+[
+  {
+    "id": "iphone-15-pro-max",
+    "name": "iPhone 15 Pro Max",
+    "price": 850,
+    "formattedPrice": "$ 850",
+    "category": "Apple",
+    "condition": "yangi",
+    "description": "Titanium korpus, A17 Pro chip va mukammal kamera tizimi bilan jihozlangan eng so'nggi va kuchli iPhone.",
+    "image": "https://avatars.mds.yandex.net/i?id=cfe2d7187248918cea905f2c5a7a11caf012958f-5326574-images-thumbs&n=13",
+    "specs": {
+      "storage": "256 GB",
+      "ram": "8 GB",
+      "color": "Natural Titanium",
+      "screen": "6.7\" Super Retina XDR OLED"
+    }
+  },
+  {
+    "id": "samsung-s24-ultra",
+    "name": "Samsung Galaxy S24 Ultra",
+    "price": 1000,
+    "formattedPrice": "$ 1,000",
+    "category": "Samsung",
+    "condition": "yangi",
+    "description": "Galaxy AI yordamida yangi darajaga ko'tarilgan, kuchli Snapdragon 8 Gen 3 va ajoyib S-Pen bilan.",
+    "image": "https://avatars.mds.yandex.net/get-mpic/5236802/2a0000018e0ca721e02a20de2e0df5d2a15c/orig",
+    "specs": {
+      "storage": "256 GB",
+      "ram": "12 GB",
+      "color": "Titanium Black",
+      "screen": "6.8\" Dynamic AMOLED 2X"
+    }
+  },
+  {
+    "id": "iphone-14-pro",
+    "name": "iPhone 14 Pro",
+    "price": 550,
+    "formattedPrice": "$ 550",
+    "category": "Apple",
+    "condition": "yangi",
+    "description": "Dynamic Island va 48MP asosiy kamera bilan professional darajadagi suratlar yaratuvchi ishonchli iPhone.",
+    "image": "https://www.androidauthority.com/wp-content/uploads/2022/09/apple-iphone-14-pro-deep-purple.jpg",
+    "specs": {
+      "storage": "128 GB",
+      "ram": "6 GB",
+      "color": "Deep Purple",
+      "screen": "6.1\" Super Retina XDR OLED"
+    }
+  },
+  {
+    "id": "xiaomi-14-pro",
+    "name": "Xiaomi 14 Pro",
+    "price": 320,
+    "formattedPrice": "$ 320",
+    "category": "Xiaomi",
+    "condition": "yangi",
+    "description": "Leica kameralari, Snapdragon 8 Gen 3 va juda tez zaryadlanish xususiyatiga ega hamyonbop flagman.",
+    "image": "https://spb.wishmaster.me/upload/iblock/32e/hjqw9dkm340xk8l0n4vyqvas6oekzv4f.png",
+    "specs": {
+      "storage": "256 GB",
+      "ram": "12 GB",
+      "color": "Black",
+      "screen": "6.73\" LTPO AMOLED"
+    }
+  },
+  {
+    "id": "redmi-note-13-pro-plus",
+    "name": "Redmi Note 13 Pro+ 5G",
+    "price": 380,
+    "formattedPrice": "$ 380",
+    "category": "Xiaomi",
+    "condition": "yangi",
+    "description": "200MP aql bovar qilmas kamera va 120W gacha tez zaryadlanishni taklif qiluvchi ideal o'rta toifa smartfon.",
+    "image": "https://avatars.mds.yandex.net/get-mpic/16918675/2a0000019c00673b3cbe6757a7e9bb63c0b2/orig",
+    "specs": {
+      "storage": "512 GB",
+      "ram": "12 GB",
+      "color": "Midnight Black",
+      "screen": "6.67\" AMOLED"
+    }
+  },
+  {
+    "id": "used-iphone-13-pro",
+    "name": "iPhone 13 Pro",
+    "price": 470,
+    "formattedPrice": "$ 470",
+    "category": "Ishlatilgan",
+    "condition": "ishlatilgan",
+    "description": "Rabochiy holat. Sinovdan o'tgan, batareya salomatligi 87%. Ekrani va korpusi yaxshi holatda, to'liq funktsional.",
+    "image": "https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=500&q=80",
+    "specs": {
+      "storage": "256 GB",
+      "ram": "6 GB",
+      "color": "Sierra Blue",
+      "screen": "6.1\" Super Retina XDR OLED"
+    }
+  },
+  {
+    "id": "used-samsung-s23",
+    "name": "Samsung Galaxy S23",
+    "price": 300,
+    "formattedPrice": "$ 300",
+    "category": "Ishlatilgan",
+    "condition": "ishlatilgan",
+    "description": "Rabochiy holat. Snapdragon 8 Gen 2, ajoyib kamera. Minimal izlar bor, to'liq ishlaydigan holat.",
+    "image": "https://i.ytimg.com/vi/uMKBBrtkH7c/maxresdefault.jpg",
+    "specs": {
+      "storage": "128 GB",
+      "ram": "8 GB",
+      "color": "Phantom Black",
+      "screen": "6.1\" Dynamic AMOLED 2X"
+    }
+  },
+  {
+    "id": "used-iphone-12",
+    "name": "iPhone 12",
+    "price": 240,
+    "formattedPrice": "$ 240",
+    "category": "Ishlatilgan",
+    "condition": "ishlatilgan",
+    "description": "Rabochiy holat. qo'llab-quvvatlaydi, batareya salomatligi 85%. Ekrani toza, korpusda kichik iz bor.",
+    "image": "https://avatars.mds.yandex.net/get-marketpic/11414424/picddd777a3c26832b956dad0ed6f67f7a4/450x600",
+    "specs": {
+      "storage": "128 GB",
+      "ram": "4 GB",
+      "color": "Blue",
+      "screen": "6.1\" Super Retina XDR OLED"
+    }
+  },
+  {
+    "id": "used-xiaomi-12-pro",
+    "name": "Xiaomi 12 Pro",
+    "price": 210,
+    "formattedPrice": "$ 210",
+    "category": "Ishlatilgan",
+    "condition": "ishlatilgan",
+    "description": "Rabochiy holat. 50MP Leica kamera, 120W tez zaryadlash. Yaxshi holat, ekranda hech qanday chiziq yo'q.",
+    "image": "https://gagadget.com/media/uploads/5_sHM6sOF.jpg",
+    "specs": {
+      "storage": "256 GB",
+      "ram": "12 GB",
+      "color": "Blue",
+      "screen": "6.73\" LTPO AMOLED"
+    }
+  },
+  {
+    "id": "used-iphone-11",
+    "name": "iPhone 11",
+    "price": 180,
+    "formattedPrice": "$ 180",
+    "category": "Ishlatilgan",
+    "condition": "ishlatilgan",
+    "description": "Rabochiy holat. Kamera tizimi yaxshi ishlaydi, batareya salomatligi 82%. Hamyonbop narxda ishonchli iPhone.",
+    "image": "https://i.ytimg.com/vi/lc5ZEIvRC5k/maxresdefault.jpg",
+    "specs": {
+      "storage": "64 GB",
+      "ram": "4 GB",
+      "color": "Purple",
+      "screen": "6.1\" Liquid Retina IPS"
+    }
+  }
+]
