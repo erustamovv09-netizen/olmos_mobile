@@ -155,6 +155,7 @@ function ProductCard({ phone }: { phone: Product }) {
 
       {/* Product Info */}
       <div
+        className="card-info"
         style={{
           padding: "1.25rem 1.5rem 1.5rem",
           flex: 1,
@@ -168,6 +169,7 @@ function ProductCard({ phone }: { phone: Product }) {
       >
         <Link href={`/product/${phone.id}`} style={{ flex: 1 }}>
           <h3
+            className="card-title"
             style={{
               fontSize: "1.05rem",
               fontWeight: 700,

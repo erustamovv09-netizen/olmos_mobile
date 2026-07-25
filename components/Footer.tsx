@@ -35,9 +35,42 @@ export default function Footer() {
       <div className="footer-glow" style={{ position: 'absolute', top: '-100px', right: '-100px', width: '300px', height: '300px', background: 'rgba(59, 130, 246, 0.12)', filter: 'blur(100px)', borderRadius: '50%', pointerEvents: 'none' }}></div>
       <div className="footer-glow" style={{ position: 'absolute', bottom: '-100px', left: '-100px', width: '300px', height: '300px', background: 'rgba(139, 92, 246, 0.08)', filter: 'blur(100px)', borderRadius: '50%', pointerEvents: 'none' }}></div>
 
-      <div className="container">
+      <style>{`
+        .footer-inner { padding: 4rem 0 2rem; }
+        .footer-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 2.5rem;
+          margin-bottom: 3rem;
+        }
+        .footer-bottom {
+          border-top: 1px solid rgba(255,255,255,0.08);
+          padding-top: 1.5rem;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          align-items: center;
+          gap: 1rem;
+          color: #64748b;
+          font-size: 0.85rem;
+        }
+        @media (max-width: 640px) {
+          .footer-inner { padding: 2.5rem 0 1.5rem; }
+          .footer-grid {
+            grid-template-columns: 1fr !important;
+            gap: 2rem !important;
+          }
+          .footer-bottom {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+          }
+        }
+      `}</style>
 
-        <div className="footer-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '3rem', marginBottom: '3rem' }}>
+      <div className="container footer-inner">
+
+        <div className="footer-grid">
 
           {/* Brand Column */}
           <div className={`slide-up-item ${isVisible ? 'visible' : ''}`} style={{ transitionDelay: '0.1s' }}>
@@ -122,7 +155,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className={`slide-up-item ${isVisible ? 'visible' : ''}`} style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '1.5rem', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '1rem', color: '#64748b', fontSize: '0.85rem', transitionDelay: '0.4s' }}>
+        <div className={`footer-bottom slide-up-item ${isVisible ? 'visible' : ''}`} style={{ transitionDelay: '0.4s' }}>
           <p>&copy; {new Date().getFullYear()} Olmos Mobile. Barcha huquqlar himoyalangan.</p>
 
           <button

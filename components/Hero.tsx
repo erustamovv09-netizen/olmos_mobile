@@ -131,12 +131,12 @@ export default function Hero({ heroProduct }: HeroProps) {
         }
 
         @media (max-width: 480px) {
-          .hero-content { padding: 1.5rem 1rem 1.25rem; }
-          .hero-image-wrap { height: 180px; }
-          .hero-image-card { height: 180px; }
+          .hero-content { padding: 1.25rem 1rem 1rem; }
+          .hero-image-wrap { height: 200px; }
+          .hero-image-card { height: 200px; }
           .hero-btn-row { flex-direction: column; align-items: stretch; }
-          .hero-btn-row a { justify-content: center; }
-          .hero-info-grid { grid-template-columns: 1fr 1fr; }
+          .hero-btn-row a { justify-content: center; text-align: center; }
+          .hero-info-grid { grid-template-columns: 1fr; gap: 0.6rem; }
         }
       `}</style>
 
