@@ -33,7 +33,49 @@ export default function ProductDetailClient({
   return (
     <>
       <Navbar />
-      <main style={{ backgroundColor: "#f8faff", minHeight: "80vh", padding: "2.5rem 0" }}>
+      <main style={{ backgroundColor: "#f8faff", minHeight: "80vh", padding: "2.5rem 0", overflowX: "hidden" }}>
+        <style>{`
+          .product-detail-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+          }
+          .product-detail-card {
+            background: #fff;
+            padding: 2.5rem 3rem;
+            border-radius: 24px;
+            border: 1px solid #eef2f7;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.07);
+            position: relative;
+            overflow: hidden;
+          }
+          .product-img-box {
+            background: linear-gradient(145deg, #f8faff 0%, #eef2f7 100%);
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 380px;
+            position: relative;
+            border: 1px solid #e2e8f0;
+          }
+          @media (max-width: 640px) {
+            .product-detail-grid {
+              grid-template-columns: 1fr !important;
+              gap: 1.25rem !important;
+            }
+            .product-detail-card {
+              padding: 1rem !important;
+              border-radius: 16px !important;
+            }
+            .product-img-box {
+              min-height: 240px !important;
+              max-height: 260px !important;
+              border-radius: 14px !important;
+            }
+          }
+        `}</style>
         <div className="container">
           {/* Breadcrumb */}
           <div
@@ -68,20 +110,7 @@ export default function ProductDetailClient({
           </div>
 
           {/* Main Card */}
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-              gap: "3rem",
-              backgroundColor: "#fff",
-              padding: "2.5rem 3rem",
-              borderRadius: "24px",
-              border: "1px solid #eef2f7",
-              boxShadow: "0 8px 40px rgba(0,0,0,0.07)",
-              position: "relative",
-              overflow: "hidden",
-            }}
-          >
+          <div className="product-detail-card product-detail-grid">
             {/* Subtle BG decoration */}
             <div
               style={{
@@ -96,19 +125,7 @@ export default function ProductDetailClient({
             />
 
             {/* Product Image */}
-            <div
-              style={{
-                background: "linear-gradient(145deg, #f8faff 0%, #eef2f7 100%)",
-                borderRadius: "20px",
-                overflow: "hidden",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                minHeight: "380px",
-                position: "relative",
-                border: "1px solid #e2e8f0",
-              }}
-            >
+            <div className="product-img-box">
               {/* Glow behind */}
               <div
                 style={{
