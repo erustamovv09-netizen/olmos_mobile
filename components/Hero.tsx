@@ -101,11 +101,11 @@ export default function Hero({ heroProduct }: HeroProps) {
             min-height: unset;
             flex-direction: column;
             align-items: stretch;
-            border-radius: 16px;
+            border-radius: 14px;
           }
           .hero-content {
             max-width: 100%;
-            padding: 2rem 1.5rem 1.5rem;
+            padding: 1.5rem 1.25rem 1.25rem;
             order: 2;
           }
           .hero-image-wrap {
@@ -115,28 +115,29 @@ export default function Hero({ heroProduct }: HeroProps) {
             transform: none;
             width: 100%;
             max-width: 100%;
-            height: 220px;
+            height: 190px;
             order: 1;
           }
           .hero-image-card {
-            border-radius: 16px 16px 0 0;
-            height: 220px;
-            padding: 0.75rem;
+            border-radius: 14px 14px 0 0;
+            height: 190px;
+            padding: 0.5rem;
           }
           .hero-info-grid {
             grid-template-columns: 1fr;
-            gap: 0.75rem;
+            gap: 0.6rem;
           }
-          .hero-price-row { gap: 0.75rem; margin-bottom: 1.5rem; }
+          .hero-price-row { gap: 0.6rem; margin-bottom: 1.25rem; }
         }
 
         @media (max-width: 480px) {
-          .hero-content { padding: 1.25rem 1rem 1rem; }
-          .hero-image-wrap { height: 200px; }
-          .hero-image-card { height: 200px; }
-          .hero-btn-row { flex-direction: column; align-items: stretch; }
-          .hero-btn-row a { justify-content: center; text-align: center; }
-          .hero-info-grid { grid-template-columns: 1fr; gap: 0.6rem; }
+          .hero-content { padding: 1rem 0.875rem 0.875rem; }
+          .hero-image-wrap { height: 160px; }
+          .hero-image-card { height: 160px; padding: 0.4rem; }
+          .hero-btn-row { flex-direction: column; align-items: stretch; gap: 0.6rem; }
+          .hero-btn-row a { justify-content: center; text-align: center; font-size: 0.85rem !important; padding: 0.7rem 1rem !important; }
+          .hero-info-grid { grid-template-columns: 1fr; gap: 0.5rem; }
+          .hero-price-row { margin-bottom: 1rem; }
         }
       `}</style>
 

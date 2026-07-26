@@ -23,6 +23,45 @@ function ProductCard({ phone }: { phone: Product }) {
   };
 
   return (
+    <>
+    <style>{`
+      .card-badge {
+        position: absolute;
+        top: 0.85rem;
+        left: 0.85rem;
+        z-index: 2;
+      }
+      .card-fav-btn {
+        position: absolute;
+        top: 0.75rem;
+        right: 0.75rem;
+        z-index: 2;
+        border-radius: 50%;
+        width: 38px;
+        height: 38px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.25s;
+      }
+      @media (max-width: 640px) {
+        .card-badge {
+          top: 0.4rem;
+          left: 0.4rem;
+          font-size: 0.58rem !important;
+          padding: 0.12rem 0.4rem !important;
+          gap: 0.15rem !important;
+        }
+        .card-fav-btn {
+          top: 0.4rem;
+          right: 0.4rem;
+          width: 26px !important;
+          height: 26px !important;
+        }
+        .card-fav-btn svg { width: 12px !important; height: 12px !important; }
+      }
+    `}</style>
     <div
       className="card"
       style={{
@@ -80,10 +119,8 @@ function ProductCard({ phone }: { phone: Product }) {
 
         {/* Category Badge */}
         <div
+          className="card-badge"
           style={{
-            position: "absolute",
-            top: "0.85rem",
-            left: "0.85rem",
             backgroundColor: catStyle.bg,
             color: catStyle.text,
             border: `1px solid ${catStyle.border}`,
@@ -104,37 +141,23 @@ function ProductCard({ phone }: { phone: Product }) {
 
         {/* Favorite Button */}
         <button
+          className="card-fav-btn"
           onClick={(e) => {
             e.preventDefault();
             toggleFavorite(phone.id);
           }}
           style={{
-            position: "absolute",
-            top: "0.75rem",
-            right: "0.75rem",
             backgroundColor: favored ? "#fef2f2" : "rgba(255,255,255,0.95)",
             border: favored ? "1.5px solid #fecaca" : "1.5px solid rgba(0,0,0,0.06)",
-            borderRadius: "50%",
-            width: "38px",
-            height: "38px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            cursor: "pointer",
             boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
             color: favored ? "#ef4444" : "#9ca3af",
-            transition: "all 0.25s var(--ease-spring)",
             backdropFilter: "blur(8px)",
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.transform = "scale(1.15)";
-            e.currentTarget.style.boxShadow = favored
-              ? "0 6px 18px rgba(239,68,68,0.35)"
-              : "0 6px 18px rgba(0,0,0,0.15)";
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.transform = "scale(1)";
-            e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.1)";
           }}
           aria-label={favored ? "Sevimlilardan olib tashlash" : "Sevimlilarga qo'shish"}
         >
@@ -245,6 +268,7 @@ function ProductCard({ phone }: { phone: Product }) {
         </Link>
       </div>
     </div>
+    </>
   );
 }
 

@@ -41,19 +41,60 @@ export default function LoginPage() {
 
 
   return (
-    <div style={{ minHeight: "100vh", display: "flex", fontFamily: "inherit" }}>
+    <div className="login-page-wrap">
+      <style>{`
+        .login-page-wrap {
+          min-height: 100vh;
+          display: flex;
+          font-family: inherit;
+        }
+        .login-left-panel {
+          width: 42%;
+          background: linear-gradient(145deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          padding: 3rem;
+          position: relative;
+          overflow: hidden;
+        }
+        .login-right-panel {
+          flex: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 2rem;
+          background-color: #fff;
+        }
+        @media (max-width: 768px) {
+          .login-page-wrap {
+            flex-direction: column !important;
+            min-height: unset !important;
+          }
+          .login-left-panel {
+            width: 100% !important;
+            padding: 1.5rem 1.25rem !important;
+            gap: 1rem;
+          }
+          .login-left-panel h2 {
+            font-size: 1.4rem !important;
+            margin-bottom: 0.5rem !important;
+          }
+          .login-left-panel p {
+            font-size: 0.82rem !important;
+            margin-bottom: 0.75rem !important;
+          }
+          .login-left-features, .login-left-quote {
+            display: none !important;
+          }
+          .login-right-panel {
+            padding: 1.5rem 1.25rem !important;
+          }
+        }
+      `}</style>
 
       {/* ===== LEFT PANEL — Brend ===== */}
-      <div style={{
-        width: "42%",
-        background: "linear-gradient(145deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        padding: "3rem",
-        position: "relative",
-        overflow: "hidden",
-      }}>
+      <div className="login-left-panel">
         {/* Background decorative orbs */}
         <div style={{ position: "absolute", top: "-80px", right: "-80px", width: "300px", height: "300px", background: "rgba(59,130,246,0.12)", filter: "blur(80px)", borderRadius: "50%", pointerEvents: "none" }} />
         <div style={{ position: "absolute", bottom: "-60px", left: "-60px", width: "250px", height: "250px", background: "rgba(139,92,246,0.1)", filter: "blur(80px)", borderRadius: "50%", pointerEvents: "none" }} />
@@ -80,20 +121,22 @@ export default function LoginPage() {
           </p>
 
           {/* Features */}
-          {[
-            { icon: "✅", text: "Tekshirilgan va kafolatlangan mahsulotlar" },
-            { icon: "🚀", text: "Tez yetkazib berish xizmati" },
-            { icon: "🔒", text: "Xavfsiz to'lov tizimi" },
-          ].map((f, i) => (
-            <div key={i} style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "0.85rem" }}>
-              <span style={{ fontSize: "1.1rem" }}>{f.icon}</span>
-              <span style={{ color: "#cbd5e1", fontSize: "0.875rem" }}>{f.text}</span>
-            </div>
-          ))}
+          <div className="login-left-features">
+            {[
+              { icon: "✅", text: "Tekshirilgan va kafolatlangan mahsulotlar" },
+              { icon: "🚀", text: "Tez yetkazib berish xizmati" },
+              { icon: "🔒", text: "Xavfsiz to'lov tizimi" },
+            ].map((f, i) => (
+              <div key={i} style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "0.85rem" }}>
+                <span style={{ fontSize: "1.1rem" }}>{f.icon}</span>
+                <span style={{ color: "#cbd5e1", fontSize: "0.875rem" }}>{f.text}</span>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Bottom quote */}
-        <div style={{ position: "relative", zIndex: 1, padding: "1.25rem", background: "rgba(255,255,255,0.05)", borderRadius: "14px", border: "1px solid rgba(255,255,255,0.08)" }}>
+        <div className="login-left-quote" style={{ position: "relative", zIndex: 1, padding: "1.25rem", background: "rgba(255,255,255,0.05)", borderRadius: "14px", border: "1px solid rgba(255,255,255,0.08)" }}>
           <p style={{ color: "#94a3b8", fontSize: "0.82rem", lineHeight: 1.6, fontStyle: "italic" }}>
             "Shahrisabzning eng ishonchli mobil texnologiyalar do'koni"
           </p>
@@ -102,7 +145,7 @@ export default function LoginPage() {
       </div>
 
       {/* ===== RIGHT PANEL — Forma ===== */}
-      <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", padding: "2rem", backgroundColor: "#fff" }}>
+      <div className="login-right-panel">
         <div style={{ width: "100%", maxWidth: "420px" }}>
 
           {/* Tab switch */}
@@ -239,13 +282,15 @@ export default function LoginPage() {
           </div>
 
           {/* Telegram login */}
-          <a href="https://t.me/olmos_mobile" target="_blank" rel="noopener noreferrer"
+          <a href="https://t.me/buriyev_1201" target="_blank" rel="noopener noreferrer"
             style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "0.6rem", width: "100%", padding: "0.85rem", backgroundColor: "#f8fafc", border: "1.5px solid #e2e8f0", borderRadius: "12px", color: "#374151", fontWeight: 700, fontSize: "0.9rem", textDecoration: "none", transition: "all 0.2s", boxSizing: "border-box" as const }}
             onMouseEnter={e => { e.currentTarget.style.borderColor = "#2AABEE"; e.currentTarget.style.backgroundColor = "#f0f9ff"; }}
             onMouseLeave={e => { e.currentTarget.style.borderColor = "#e2e8f0"; e.currentTarget.style.backgroundColor = "#f8fafc"; }}>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="#2AABEE"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.247l-2.02 9.52c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.883.7z"/></svg>
             Telegram orqali bog'lanish
           </a>
+
+
 
           {/* Switch mode */}
           <p style={{ textAlign: "center", color: "#64748b", fontSize: "0.875rem", marginTop: "1.5rem" }}>

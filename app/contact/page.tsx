@@ -37,12 +37,13 @@ export default function ContactPage() {
         </svg>
       ),
       label: "Telegram",
-      value: "@olmos_mobile",
-      href: "https://t.me/olmos_mobile",
+      value: "Telegram orqali bog'lanish",
+      href: "https://t.me/buriyev_1201",
       color: "#3b82f6",
       bg: "rgba(59,130,246,0.1)",
       description: "Tezkor javob uchun yozing",
     },
+
     {
       icon: (
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -81,9 +82,54 @@ export default function ContactPage() {
       <style>{`
         .contact-hero { padding: 5rem 0 4rem; }
         .contact-bottom-grid { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+        .contact-card {
+          display: block;
+          background-color: #fff;
+          border-radius: 20px;
+          padding: 2rem;
+          border: 1px solid #e2e8f0;
+          box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+          cursor: pointer;
+          text-decoration: none;
+          color: inherit;
+        }
+        .contact-card-icon {
+          width: 64px;
+          height: 64px;
+          border-radius: 18px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 1.25rem;
+        }
         @media (max-width: 640px) {
-          .contact-hero { padding: 3rem 0 2.5rem !important; }
-          .contact-bottom-grid { grid-template-columns: 1fr !important; }
+          .contact-hero { padding: 2rem 0 1.5rem !important; }
+          .contact-hero h1 { font-size: 1.6rem !important; margin-bottom: 0.5rem !important; }
+          .contact-hero p { font-size: 0.88rem !important; line-height: 1.45 !important; }
+          .contact-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 0.65rem !important;
+            margin-bottom: 1.5rem !important;
+          }
+          .contact-card {
+            padding: 0.85rem !important;
+            border-radius: 14px !important;
+          }
+          .contact-card-icon {
+            width: 40px !important;
+            height: 40px !important;
+            border-radius: 10px !important;
+            margin-bottom: 0.6rem !important;
+          }
+          .contact-card-icon svg {
+            width: 20px !important;
+            height: 20px !important;
+          }
+          .contact-card-label { font-size: 0.65rem !important; margin-bottom: 0.2rem !important; }
+          .contact-card-value { font-size: 0.88rem !important; margin-bottom: 0.25rem !important; }
+          .contact-card-desc { font-size: 0.75rem !important; line-height: 1.3 !important; }
+          .contact-card-action { margin-top: 0.6rem !important; font-size: 0.75rem !important; }
+          .contact-bottom-grid { grid-template-columns: 1fr !important; gap: 1rem !important; }
           .contact-map-header { flex-direction: column; align-items: flex-start !important; gap: 0.75rem !important; }
         }
       `}</style>
@@ -173,17 +219,9 @@ export default function ContactPage() {
                   href={item.href}
                   target={item.href.startsWith("http") ? "_blank" : undefined}
                   rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  className="contact-card"
                   style={{
-                    display: "block",
-                    backgroundColor: "#fff",
-                    borderRadius: "20px",
-                    padding: "2rem",
-                    border: "1px solid #e2e8f0",
-                    boxShadow: "0 4px 24px rgba(0,0,0,0.06)",
                     transition: "all 0.35s cubic-bezier(0.175,0.885,0.32,1.275)",
-                    cursor: "pointer",
-                    textDecoration: "none",
-                    color: "inherit",
                     opacity: isVisible ? 1 : 0,
                     transform: isVisible ? "translateY(0)" : "translateY(30px)",
                     transitionDelay: `${0.1 + i * 0.1}s`,
@@ -201,38 +239,32 @@ export default function ContactPage() {
                 >
                   {/* Icon */}
                   <div
+                    className="contact-card-icon"
                     style={{
-                      width: "64px",
-                      height: "64px",
-                      borderRadius: "18px",
                       backgroundColor: item.bg,
                       color: item.color,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      marginBottom: "1.25rem",
                     }}
                   >
                     {item.icon}
                   </div>
 
                   {/* Label */}
-                  <div style={{ fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", color: "#94a3b8", marginBottom: "0.4rem" }}>
+                  <div className="contact-card-label" style={{ fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", color: "#94a3b8" }}>
                     {item.label}
                   </div>
 
                   {/* Value */}
-                  <div style={{ fontSize: "1.2rem", fontWeight: 800, color: "#0f172a", marginBottom: "0.6rem" }}>
+                  <div className="contact-card-value" style={{ fontWeight: 800, color: "#0f172a" }}>
                     {item.value}
                   </div>
 
                   {/* Description */}
-                  <div style={{ fontSize: "0.875rem", color: "#64748b", lineHeight: 1.5 }}>
+                  <div className="contact-card-desc" style={{ color: "#64748b" }}>
                     {item.description}
                   </div>
 
                   {/* Arrow */}
-                  <div style={{ marginTop: "1.25rem", display: "flex", alignItems: "center", gap: "0.3rem", color: item.color, fontSize: "0.85rem", fontWeight: 700 }}>
+                  <div className="contact-card-action" style={{ display: "flex", alignItems: "center", gap: "0.3rem", color: item.color, fontWeight: 700 }}>
                     Bog'lanish
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
@@ -276,8 +308,8 @@ export default function ContactPage() {
 
                 <div style={{ display: "flex", flexDirection: "column", gap: "0.85rem" }}>
                   {[
-                    { day: "Dushanba – Shanba", time: "09:00 – 20:00", open: true },
-                    { day: "Yakshanba", time: "10:00 – 18:00", open: true },
+                    { day: "Dushanba – Shanba", time: "08:00 – 18:00", open: true },
+                    { day: "Yakshanba", time: "09:00 – 17:00", open: true },
                   ].map((item, i) => (
                     <div
                       key={i}

@@ -62,7 +62,7 @@ const sections = [
       "• Biz saqlab qo'ygan ma'lumotlaringizni so'rash va ko'rish",
       "• Noto'g'ri ma'lumotlarni to'g'rilashni talab qilish",
       "• Ma'lumotlaringizni o'chirishni talab qilish",
-      "Ushbu huquqlardan foydalanish uchun: +998 97 385 77 66 yoki @olmos_mobile Telegram orqali bog'laning.",
+      "Ushbu huquqlardan foydalanish uchun: +998 97 385 77 66 yoki Instagram: @olmos_mobile orqali bog'laning.",
     ],
   },
   {
@@ -146,7 +146,7 @@ export default function PrivacyPage() {
                 <a href="tel:+998973857766" style={{ display: "inline-flex", alignItems: "center", gap: "0.4rem", padding: "0.65rem 1.1rem", backgroundColor: "#1e293b", color: "#fff", borderRadius: "10px", fontWeight: 700, fontSize: "0.85rem", textDecoration: "none", border: "1px solid rgba(255,255,255,0.08)" }}>
                   📞 +998 97 385 77 66
                 </a>
-                <a href="https://t.me/olmos_mobile" target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: "0.4rem", padding: "0.65rem 1.1rem", background: "linear-gradient(135deg, #2563eb, #3b82f6)", color: "#fff", borderRadius: "10px", fontWeight: 700, fontSize: "0.85rem", textDecoration: "none" }}>
+                <a href="https://t.me/buriyev_1201" target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: "0.4rem", padding: "0.65rem 1.1rem", background: "linear-gradient(135deg, #2563eb, #3b82f6)", color: "#fff", borderRadius: "10px", fontWeight: 700, fontSize: "0.85rem", textDecoration: "none" }}>
                   ✈️ Telegram
                 </a>
               </div>

@@ -33,7 +33,7 @@ export default function ProductDetailClient({
   return (
     <>
       <Navbar />
-      <main style={{ backgroundColor: "#f8faff", minHeight: "80vh", padding: "2.5rem 0", overflowX: "hidden" }}>
+      <main className="product-detail-main" style={{ backgroundColor: "#f8faff", minHeight: "80vh", padding: "2.5rem 0", overflowX: "hidden" }}>
         <style>{`
           .product-detail-grid {
             display: grid;
@@ -61,18 +61,19 @@ export default function ProductDetailClient({
             border: 1px solid #e2e8f0;
           }
           @media (max-width: 640px) {
+            .product-detail-main { padding: 1rem 0 !important; }
             .product-detail-grid {
               grid-template-columns: 1fr !important;
-              gap: 1.25rem !important;
+              gap: 1rem !important;
             }
             .product-detail-card {
-              padding: 1rem !important;
-              border-radius: 16px !important;
+              padding: 0.875rem !important;
+              border-radius: 14px !important;
             }
             .product-img-box {
-              min-height: 240px !important;
-              max-height: 260px !important;
-              border-radius: 14px !important;
+              min-height: 220px !important;
+              max-height: 240px !important;
+              border-radius: 12px !important;
             }
           }
         `}</style>
@@ -383,7 +384,7 @@ export default function ProductDetailClient({
                 {/* Telegram + Instagram */}
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.75rem" }}>
                   <a
-                    href="https://t.me/olmos_mobile"
+                    href="https://t.me/buriyev_1201"
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{

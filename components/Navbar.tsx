@@ -4,15 +4,20 @@ import { useFavorites } from "@/context/FavoritesContext";
 import { useState, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
 
+import { products } from "@/data/products";
+import { useRef } from "react";
+
 export default function Navbar() {
   const { favorites } = useFavorites();
   const [searchQuery, setSearchQuery] = useState("");
   const [isScrolled, setIsScrolled] = useState(false);
   const [searchFocused, setSearchFocused] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [loggedInUser, setLoggedInUser] = useState<{ name: string } | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
+  const searchRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -21,11 +26,29 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (searchRef.current && !searchRef.current.contains(e.target as Node)) {
+        setIsSearchOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  useEffect(() => {
     const stored = localStorage.getItem("olmos_user");
     if (stored) {
       try { setLoggedInUser(JSON.parse(stored)); } catch {}
     } else {
       setLoggedInUser(null);
+    }
+
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const q = params.get("q");
+      if (q) {
+        setSearchQuery(q);
+      }
     }
   }, [pathname]);
 
@@ -39,9 +62,18 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
 
+  const filteredProducts = searchQuery.trim()
+    ? products.filter(
+        (p) =>
+          p.name.toLowerCase().includes(searchQuery.trim().toLowerCase()) ||
+          p.category.toLowerCase().includes(searchQuery.trim().toLowerCase())
+      )
+    : [];
+
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
+      setIsSearchOpen(false);
       router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
       setMenuOpen(false);
     }
@@ -63,16 +95,16 @@ export default function Navbar() {
         position: "sticky",
         top: 0,
         zIndex: 1000,
-        backgroundColor: isScrolled ? "rgba(255,255,255,0.92)" : "#ffffff",
-        backdropFilter: isScrolled ? "blur(20px) saturate(1.5)" : "none",
-        WebkitBackdropFilter: isScrolled ? "blur(20px) saturate(1.5)" : "none",
-        borderBottom: isScrolled ? "1px solid rgba(0,0,0,0.08)" : "1px solid #f1f5f9",
+        backgroundColor: "rgba(255,255,255,0.96)",
+        backdropFilter: "blur(20px) saturate(1.5)",
+        WebkitBackdropFilter: "blur(20px) saturate(1.5)",
+        borderBottom: "1px solid #e2e8f0",
         transition: "all 0.35s cubic-bezier(0.4,0,0.2,1)",
-        boxShadow: isScrolled ? "0 4px 24px rgba(0,0,0,0.07)" : "none",
+        boxShadow: isScrolled ? "0 6px 24px rgba(0,0,0,0.08)" : "0 2px 10px rgba(0,0,0,0.04)",
       }}
     >
       <style>{`
-        .navbar-topbar { display: flex; }
+        .navbar-topbar { display: block; width: 100%; }
         .navbar-main { display: flex; align-items: center; gap: 1.5rem; padding: 0.9rem 1.25rem; }
         .navbar-search { flex: 1; position: relative; max-width: 560px; }
         .navbar-actions { display: flex; gap: 1.25rem; align-items: center; flex-shrink: 0; }
@@ -86,12 +118,12 @@ export default function Navbar() {
         @media (max-width: 768px) {
           .navbar-topbar { display: none !important; }
           .navbar-main { padding: 0.6rem 1rem; gap: 0.6rem; }
-          .navbar-search { max-width: unset; }
+          .navbar-search { max-width: unset; flex: 1; margin-left: -1.4rem; }
           .navbar-actions { display: none !important; }
           .navbar-search-btn-text { display: none !important; }
           .navbar-search-btn-icon { display: block !important; }
           .navbar-hamburger { display: flex; align-items: center; justify-content: center; }
-          .navbar-logo-wrap { width: 130px !important; height: 44px !important; background-size: 75% !important; }
+          .navbar-logo-wrap { width: 130px !important; height: 44px !important; background-size: 75% !important; background-position: 0% 47% !important; }
           .navbar-cats { padding: 0 0.5rem; }
           .navbar-search input { padding: 0.6rem 0.75rem 0.6rem 2.5rem !important; font-size: 0.88rem !important; }
           .navbar-mobile-menu.open {
@@ -107,8 +139,9 @@ export default function Navbar() {
           }
         }
         @media (max-width: 480px) {
-          .navbar-logo-wrap { width: 110px !important; background-size: 80% !important; }
+          .navbar-logo-wrap { width: 110px !important; background-size: 80% !important; background-position: 0% 47% !important; }
           .navbar-main { gap: 0.5rem; padding: 0.5rem 0.75rem; }
+          .navbar-search { margin-left: -1.2rem; }
         }
       `}</style>
 
@@ -122,13 +155,14 @@ export default function Navbar() {
           color: "#94a3b8",
         }}
       >
-        <div className="container flex justify-between items-center">
-          <div className="flex gap-4">
-            <span style={{ display: "flex", alignItems: "center", gap: "0.35rem" }}>
+        <div className="container" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", width: "100%" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "1.5rem" }}>
+            <span style={{ display: "flex", alignItems: "center", gap: "0.4rem" }}>
               <span style={{ color: "#3b82f6" }}>📍</span>
-              Shahrisabz sh.
+              <span>Shahrisabz sh.</span>
             </span>
-            <span style={{ display: "flex", alignItems: "center", gap: "0.35rem" }}>
+            <span style={{ color: "#334155" }}>|</span>
+            <span style={{ display: "flex", alignItems: "center", gap: "0.4rem" }}>
               <span style={{ color: "#3b82f6" }}>📞</span>
               <a href="tel:+998973857766" style={{ color: "#cbd5e1", fontWeight: 600, transition: "color 0.2s" }}
                 onMouseEnter={e => e.currentTarget.style.color = "#60a5fa"}
@@ -137,9 +171,9 @@ export default function Navbar() {
               </a>
             </span>
           </div>
-          <div style={{ display: "flex", alignItems: "center", gap: "0.35rem" }}>
-            <span style={{ width: "6px", height: "6px", borderRadius: "50%", backgroundColor: "#22c55e", display: "inline-block", boxShadow: "0 0 6px #22c55e" }} />
-            <span>Ish vaqti: 09:00 – 20:00</span>
+          <div style={{ display: "flex", alignItems: "center", gap: "0.4rem" }}>
+            <span style={{ width: "7px", height: "7px", borderRadius: "50%", backgroundColor: "#22c55e", display: "inline-block", boxShadow: "0 0 8px #22c55e" }} />
+            <span style={{ color: "#e2e8f0", fontWeight: 500 }}>Ish vaqti: 08:00 – 18:00</span>
           </div>
         </div>
       </div>
@@ -166,8 +200,8 @@ export default function Navbar() {
           />
         </Link>
 
-        {/* Search Bar — desktop only */}
-        <div className="navbar-search">
+        {/* Search Bar */}
+        <div className="navbar-search" ref={searchRef} style={{ position: "relative" }}>
           <form onSubmit={handleSearch} style={{ display: "flex", width: "100%" }}>
             <div style={{ position: "relative", width: "100%" }}>
               <svg style={{ position: "absolute", left: "1rem", top: "50%", transform: "translateY(-50%)", color: searchFocused ? "#2563eb" : "#9ca3af", transition: "color 0.2s", pointerEvents: "none" }}
@@ -175,8 +209,15 @@ export default function Navbar() {
                 <circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" />
               </svg>
               <input type="text" placeholder="Mahsulotlarni qidirish..." value={searchQuery}
-                onChange={e => setSearchQuery(e.target.value)}
-                onFocus={() => setSearchFocused(true)} onBlur={() => setSearchFocused(false)}
+                onChange={e => {
+                  setSearchQuery(e.target.value);
+                  setIsSearchOpen(true);
+                }}
+                onFocus={() => {
+                  setSearchFocused(true);
+                  if (searchQuery.trim()) setIsSearchOpen(true);
+                }}
+                onBlur={() => setSearchFocused(false)}
                 style={{ width: "100%", padding: "0.7rem 1rem 0.7rem 3rem", borderRadius: "12px 0 0 12px", border: `2px solid ${searchFocused ? "#2563eb" : "#e5e7eb"}`, borderRight: "none", outline: "none", fontSize: "0.95rem", backgroundColor: searchFocused ? "#f8faff" : "#f9fafb", color: "#111827", transition: "all 0.25s", boxSizing: "border-box" }}
               />
             </div>
@@ -189,6 +230,109 @@ export default function Navbar() {
               <span className="navbar-search-btn-text">Qidirish</span>
             </button>
           </form>
+
+          {/* Live Search Results Dropdown */}
+          {searchQuery.trim().length > 0 && isSearchOpen && (
+            <div
+              style={{
+                position: "absolute",
+                top: "calc(100% + 8px)",
+                left: 0,
+                right: 0,
+                backgroundColor: "#ffffff",
+                borderRadius: "16px",
+                boxShadow: "0 16px 40px rgba(0,0,0,0.18), 0 4px 12px rgba(0,0,0,0.08)",
+                border: "1.5px solid #e2e8f0",
+                overflow: "hidden",
+                zIndex: 1050,
+                maxHeight: "400px",
+                overflowY: "auto",
+              }}
+            >
+              {filteredProducts.length > 0 ? (
+                <>
+                  <div style={{ padding: "0.4rem 0" }}>
+                    {filteredProducts.slice(0, 6).map((item) => (
+                      <Link
+                        key={item.id}
+                        href={`/product/${item.id}`}
+                        onClick={() => {
+                          setIsSearchOpen(false);
+                        }}
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "0.85rem",
+                          padding: "0.65rem 1rem",
+                          textDecoration: "none",
+                          color: "#0f172a",
+                          transition: "background-color 0.2s",
+                          borderBottom: "1px solid #f1f5f9",
+                        }}
+                        onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#eff6ff")}
+                        onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "transparent")}
+                      >
+                        <img
+                          src={item.image}
+                          alt={item.name}
+                          style={{
+                            width: "44px",
+                            height: "44px",
+                            borderRadius: "10px",
+                            objectFit: "cover",
+                            flexShrink: 0,
+                            border: "1px solid #e2e8f0",
+                          }}
+                        />
+                        <div style={{ flex: 1, minWidth: 0 }}>
+                          <div style={{ fontWeight: 800, fontSize: "0.9rem", color: "#0f172a", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                            {item.name}
+                          </div>
+                          <div style={{ fontSize: "0.78rem", color: "#64748b", display: "flex", gap: "0.5rem", alignItems: "center" }}>
+                            <span>{item.category}</span>
+                            <span>•</span>
+                            <span style={{ color: "#2563eb", fontWeight: 800 }}>{item.formattedPrice}</span>
+                          </div>
+                        </div>
+                        <span style={{ color: "#2563eb", fontSize: "0.85rem", fontWeight: 700, flexShrink: 0 }}>
+                          Ko'rish →
+                        </span>
+                      </Link>
+                    ))}
+                  </div>
+                  <Link
+                    href={`/search?q=${encodeURIComponent(searchQuery.trim())}`}
+                    onClick={() => setIsSearchOpen(false)}
+                    style={{
+                      display: "block",
+                      padding: "0.8rem",
+                      backgroundColor: "#f8fafc",
+                      textAlign: "center",
+                      fontSize: "0.85rem",
+                      fontWeight: 800,
+                      color: "#2563eb",
+                      textDecoration: "none",
+                      borderTop: "1px solid #e2e8f0",
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#eff6ff")}
+                    onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#f8fafc")}
+                  >
+                    Barcha natijalarni ko'rish ({filteredProducts.length} ta) →
+                  </Link>
+                </>
+              ) : (
+                <div style={{ padding: "2rem 1rem", textAlign: "center", color: "#64748b" }}>
+                  <span style={{ fontSize: "2rem", display: "block", marginBottom: "0.4rem" }}>🔍</span>
+                  <div style={{ fontWeight: 700, fontSize: "0.95rem", color: "#1e293b", marginBottom: "0.2rem" }}>
+                    "{searchQuery}" bo'yicha mahsulot topilmadi
+                  </div>
+                  <div style={{ fontSize: "0.8rem", color: "#94a3b8" }}>
+                    Iltimos, nomini to'g'ri yozganingizni tekshiring
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
         </div>
 
         {/* Action Icons — desktop only */}
@@ -326,7 +470,7 @@ export default function Navbar() {
           <div style={{ padding: "0.75rem", backgroundColor: "#f8fafc", borderRadius: "10px", marginTop: "0.25rem" }}>
             <p style={{ fontSize: "0.82rem", color: "#64748b", margin: 0 }}>📍 Shahrisabz sh., Ming xil buyum</p>
             <p style={{ fontSize: "0.82rem", color: "#64748b", margin: "0.25rem 0 0" }}>📞 +998 97 385 77 66</p>
-            <p style={{ fontSize: "0.82rem", color: "#64748b", margin: "0.25rem 0 0" }}>🕐 09:00 – 20:00</p>
+            <p style={{ fontSize: "0.82rem", color: "#64748b", margin: "0.25rem 0 0" }}>🕐 08:00 – 18:00 (Yak: 09:00 – 17:00)</p>
           </div>
         </div>
       </div>
