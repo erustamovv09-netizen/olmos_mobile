@@ -29,6 +29,7 @@ export default function ContactPage() {
       bg: "rgba(34,197,94,0.1)",
       description: "Istalgan vaqt qo'ng'iroq qiling",
     },
+    
     {
       icon: (
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
