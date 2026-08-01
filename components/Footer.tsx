@@ -182,6 +182,7 @@ export default function Footer() {
                 <h3 className="footer-brand-title">
                   Olmos Mobile
                 </h3>
+                
               </Link>
               <div className="footer-social-wrap">
                 <a href="https://instagram.com/olmos_mobile" target="_blank" rel="noopener noreferrer"
