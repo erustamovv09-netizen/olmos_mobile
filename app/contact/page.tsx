@@ -143,7 +143,7 @@ export default function ContactPage() {
             position: "relative",
             overflow: "hidden",
           }}
-          
+    
         >
           {/* Decorative blobs */}
           <div style={{ position: "absolute", top: "-80px", right: "-80px", width: "350px", height: "350px", background: "rgba(59,130,246,0.12)", filter: "blur(100px)", borderRadius: "50%", pointerEvents: "none" }} />
