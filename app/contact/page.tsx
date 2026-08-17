@@ -188,7 +188,6 @@ export default function ContactPage() {
                   WebkitTextFillColor: "transparent",
                   marginBottom: "1rem",
                 }}
-
               >
                 Biz bilan aloqa
               </h1>
