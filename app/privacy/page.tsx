@@ -135,7 +135,6 @@ export default function PrivacyPage() {
                 </div>
               ))}
             </div>
-  
 
             {/* Contact block */}
             <div style={{ marginTop: "2rem", backgroundColor: "#0f172a", borderRadius: "16px", padding: "2rem", display: "flex", flexWrap: "wrap", gap: "1.5rem", alignItems: "center", justifyContent: "space-between" }}>
