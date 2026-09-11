@@ -259,7 +259,6 @@ export default function Footer() {
 
         </div>
 
-
         {/* Bottom Bar */}
         <div className={`footer-bottom slide-up-item ${isVisible ? 'visible' : ''}`} style={{ transitionDelay: '0.4s' }}>
           <p>&copy; {new Date().getFullYear()} Olmos Mobile. Barcha huquqlar himoyalangan.</p>
