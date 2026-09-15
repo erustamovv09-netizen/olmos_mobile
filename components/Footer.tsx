@@ -256,7 +256,7 @@ export default function Footer() {
               +998 97 385 77 66
             </a>
           </div>
-        
+      
 
         </div>
 
