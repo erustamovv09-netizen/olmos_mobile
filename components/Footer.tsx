@@ -258,7 +258,7 @@ export default function Footer() {
           </div>
 
         </div>
-      
+    
 
 
         {/* Bottom Bar */}
