@@ -258,7 +258,7 @@ export default function Footer() {
           </div>
 
         </div>
-    
+  
 
         {/* Bottom Bar */}
         <div className={`footer-bottom slide-up-item ${isVisible ? 'visible' : ''}`} style={{ transitionDelay: '0.4s' }}>
