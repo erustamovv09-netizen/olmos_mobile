@@ -274,7 +274,6 @@ export default function LoginPage() {
 
           </form>
 
-
           {/* Divider */}
           <div style={{ display: "flex", alignItems: "center", gap: "1rem", margin: "1.5rem 0" }}>
             <div style={{ flex: 1, height: "1px", backgroundColor: "#f1f5f9" }} />
