@@ -217,7 +217,6 @@ export default function LoginPage() {
               />
             </div>
 
-
             {/* Parol */}
             <div style={{ position: "relative" }}>
               <div style={{ position: "absolute", left: "0.9rem", top: "50%", transform: "translateY(-50%)", color: focused === "password" ? "#2563eb" : "#9ca3af", pointerEvents: "none" }}>
