@@ -216,7 +216,7 @@ export default function LoginPage() {
                 style={inputBase("phone")}
               />
             </div>
-      
+    
 
             {/* Parol */}
             <div style={{ position: "relative" }}>
