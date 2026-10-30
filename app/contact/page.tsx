@@ -303,7 +303,7 @@ export default function ContactPage() {
                       <circle cx="12" cy="12" r="10" />
                       <polyline points="12 6 12 12 16 14" />
                     </svg>
-
+ 
                   </div>
                   <h2 style={{ fontWeight: 800, fontSize: "1.25rem", color: "#0f172a" }}>Ish vaqtlari</h2>
                 </div>
