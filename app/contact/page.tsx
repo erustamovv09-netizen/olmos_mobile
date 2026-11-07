@@ -306,7 +306,6 @@ export default function ContactPage() {
                   </div>
                   <h2 style={{ fontWeight: 800, fontSize: "1.25rem", color: "#0f172a" }}>Ish vaqtlari</h2>
                 </div>
-          
                 <div style={{ display: "flex", flexDirection: "column", gap: "0.85rem" }}>
                   {[
                     { day: "Dushanba – Shanba", time: "08:00 – 18:00", open: true },
